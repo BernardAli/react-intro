@@ -1,17 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDom from 'react-dom'
+import {data} from './books'
+import Book from './book'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// console.log(newNames)
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function BookList () {
+    return (
+        <div className="ui container">
+            <h3>This is a book List</h3>
+            <div className="ui three column grid">
+                {data.map((book) => {
+                    // const {img, title, author} = book
+                    return (
+                        <Book {...book} key={book.id}> </Book>
+                    )
+                })}
+            </div>
+        </div>
+     );
+}
+
+ReactDom.render(
+    <BookList />, document.getElementById('root')
+)
